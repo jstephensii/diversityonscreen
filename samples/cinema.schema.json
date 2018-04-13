@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Cinema",
+  "description": "The diversity details of the Cinema object.",
+  "type": "object",
+  "properties": {
+    "idTMDB": {
+      "type": "integer",
+      "description": "The id from the tdmb database",
+      "minimum": 0,
+    },
+    "title": {
+      "type": "string"
+    },
+    "diversityScoreTry": {
+      "$ref": "/samples/diversity.schema"
+    },
+    "diversityScore": {
+      "description": "The overall diversity score from least(0.0) to most(10.0) diverse.",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10.0
+    }
+  },
+  "required": ["idTMDB"]
+}

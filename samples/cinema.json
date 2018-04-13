@@ -1,0 +1,27 @@
+{
+  "idTMDB": 9085,
+  "title": "Harlem Nights",
+  "diversityScore": 8,
+  "diversity": {
+    "race": {
+      "homogeneity": 1,
+      "progressiveness": 7
+    },
+    "gender": {
+      "homogeneity": 1,
+      "progressiveness": 5
+    },
+    "ethnicity": {
+      "homogeneity": 1,
+      "progressiveness": 5
+    },
+    "nationality": {
+      "homogeneity": 1,
+      "progressiveness": 2
+    },
+    "age": {
+      "homogeneity": 7,
+      "progressiveness": 7
+    }
+  }
+}

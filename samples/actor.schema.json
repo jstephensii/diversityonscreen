@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Actor",
+  "description": "An actor from the movie database.",
+  "type": "object",
+  "properties": {
+    "idTMDB": {
+      "description": "The unique identifier for an actor",
+      "type": "integer"
+    },
+    "name": {
+      "description": "Name of the actor",
+      "type": "string"
+    },
+    "race": {
+      "description": "Actor's 'apparent' race based on visual or audio cues",
+      "type": "string"
+    },
+    "ethnicity": {
+      "description": "Ethnic origin",
+      "type": "string"
+    },
+    "gender": {
+      "description": "Based on gender at birth",
+      "enum": ["male", "female", "other"]
+    },
+    "nationality": {
+      "description": "Country of birth",
+      "type": "string"
+    }
+  },
+  "required": ["idTMDB"]
+}

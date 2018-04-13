@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Diversity",
+  "description": "The diversity details of the parent object.",
+  "type": "object",
+  "properties": {
+    "race": {
+      "$ref": "/samples/diversityCategory.schema"
+    },
+    "gender": {
+      "$ref": "/samples/diversityCategory.schema"
+    },
+    "ethnicity": {
+      "$ref": "/samples/diversityCategory.schema"
+    },
+    "nationality": {
+      "$ref": "/samples/diversityCategory.schema"
+    },
+    "age": {
+      "$ref": "/samples/diversityCategory.schema"
+    }
+  }
+}
