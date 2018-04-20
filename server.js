@@ -1,13 +1,20 @@
-require('dotenv').config();
 isOnProd = (process.env.NODE_ENV === 'production');
 
-if (isOnProd) {
-  require("@google-cloud/trace-agent").start();
+if (!isOnProd) {
+  require('dotenv').config();
 }
 
 if (process.env.GCLOUD_PROJECT) {
-  require("@google-cloud/debug-agent").start();
-}
+  require("@google-cloud/trace-agent").start();
+  if(process.env.GOOGLE_APPLICATION_CREDENTIALS){
+    require("@google-cloud/debug-agent").start({
+      projectId: process.env.GCLOUD_PROJECT,
+      keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS
+    });
+  } else {
+    require("@google-cloud/debug-agent").start();
+  };
+};
 
 const winston = require('winston');
 const Logger = winston.Logger;
