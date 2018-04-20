@@ -1,36 +1,52 @@
+require('dotenv').config();
+isOnProd = (process.env.NODE_ENV === 'production');
+
+if (isOnProd) {
+  require("@google-cloud/trace-agent").start();
+}
+
+if (process.env.GCLOUD_PROJECT) {
+  require("@google-cloud/debug-agent").start();
+}
+
+const winston = require('winston');
+const Logger = winston.Logger;
+const Console = winston.transports.Console;
+const LoggingWinston = require('@google-cloud/logging-winston').LoggingWinston;
+const loggingWinston = new LoggingWinston();
+
+const logger = new Logger({
+  level: 'info',
+  transports: [
+    // Log to console
+    new Console(),
+    // And log ot Stackdriver LoggingWinston
+    loggingWinston,
+  ],
+});
+
 const express = require('express');
 const Datastore = require('@google-cloud/datastore');
 const bodyParser = require('body-parser');
 const path = require ('path');
-const logger = require('morgan');
+const api_router = require('./routes/index');
 
 const projectId = 'diversity-on-screen';
 const datastore = new Datastore({
   projectId: projectId
-})
-
-const PORT = process.env.PORT || 3000;
-
-const app = express();
-
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({extended: true}));
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-}
-
-//app.get('/api/*', function(req, res) {
-//    res.send('Hello World');
-//});
-
-app.get('/', (req, res) => {
-    res.send('Call for server page: Hello World');
-    //res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
 });
 
-require('./routes')(app, {});
+const PORT = process.env.PORT || 3000;
+const app = express();
+
+app.use(bodyParser.urlencoded({extended: true}));
+
+if (isOnProd) {
+  app.use(express.static('client/build'));
+};
+
+app.use('', api_router);
+
 app.listen(PORT, () =>{
-  console.log(`App listening on port ${PORT}`);
-  console.log('Press Ctrl+C to quit.');
+    logger.info(`App listening on port ${PORT}`);
 });
