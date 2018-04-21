@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 
 export class CinemaTable extends Component {
+  constructor(props){
+    super(props);
+
+  };
+
   render(){
     const rows = [];
     let lastCinemaType = null;
