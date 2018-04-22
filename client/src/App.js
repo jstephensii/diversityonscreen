@@ -1,26 +1,36 @@
-import React, {Component} from 'react';
+// @flow
+
+import * as React from 'react';
 import logo from './logo.svg';
-import logoTMDB from './assets/tmdb_logo';
+import logoTMDB from './assets/tmdb_logo.svg';
 import './App.css';
 
-import {CinemaTable} from './components/CinemaTable.jsx';
-import {SearchBar} from './components/SearchBar.jsx';
+import {CinemaTable} from './components/CinemaTable.js';
+import {SearchBar} from './components/SearchBar.js';
 import text from './assets/text.json';
 
-class App extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      searchText: ''
-    };
-    handleSearchTextChange = this.handleSearchTextChange.bind();
+type Props = {cinemaItems: [{
+  type: string,
+  title: string,
+  detailLink: string,
+  score: number
+}]};
+
+type State = {
+  searchText: string,
+};
+
+class App extends React.Component<Props, State>{
+  state = {
+    searchText: '',
   };
 
-  handleSearchTextChange(searchText){
-    this.setState({
-      searchText: searchText
-    });
-    searchCinema();
+  handleSearchTextChange = (event: SyntheticEvent<HTMLInputElement>) => {
+    (event.currentTarget: HTMLInputElement);
+
+    this.setState(prevState => ({
+      searchText: prevState.searchText,
+    }));
   };
 
   render() {
@@ -31,18 +41,18 @@ class App extends Component{
           <h1 className="App-title">{text.appTitle}</h1>
           {text.appTagline}
         </header>
-        <SearchBar searchText={this.state.searchText} onSubmit={this.handleSearchTextChange} />
-        <CinemaTable cinemaItems={this.props.cinemaItems} />
+        <SearchBar text={this.state.searchText} handleTextChange={this.handleSearchTextChange} />
+        <CinemaTable items={this.props.cinemaItems} />
         <img src={logoTMDB} className="App-logo2" alt="TMDB Logo" />
       </div>
     );
   }; // END render
 }; // END CLASS - APP
 
-searchCinema(){
+function searchCinema(){
   //TODO: Implement
 };
-getPopularCinema(){
+function getPopularCinema(){
   //TODO: Implement
 };
 

@@ -1,20 +1,27 @@
-import React, {Component} from 'react';
+// @flow
 
-export class CinemaTable extends Component {
-  constructor(props){
-    super(props);
+import * as React from 'react';
 
-  };
+type PropsCinemaItem = {
+    type: string,
+    title: string,
+    detailLink: string,
+    score: number
+};
 
+type PropsCinemaItems = {items: [PropsCinemaItem]};
+
+export class CinemaTable extends React.Component<PropsCinemaItems> {
   render(){
     const rows = [];
     let lastCinemaType = null;
+    this.props
 
-    this.props.cinemaItems.forEach((cinemaItem) => {
+    this.props.items.forEach((cinemaItem) => {
       if (cinemaItem.type !== lastCinemaType) {
         rows.push(
           <CinemaCategoryRow
-            type= {cinemaItem.type}
+            cinemaType= {cinemaItem.type}
             key= {cinemaItem.type}/>
         );
       }
@@ -40,9 +47,9 @@ export class CinemaTable extends Component {
   };// END render
 };  // END CLASS - CinemaTable
 
-class CinemaCategoryRow extends Component{
+class CinemaCategoryRow extends React.Component<{cinemaType: string}>{
   render(){
-    const cinemaType = this.props.type;
+    const cinemaType = this.props.cinemaType;
     return (
       <tr>
         <th colSpan="2">{cinemaType}</th>
@@ -51,14 +58,15 @@ class CinemaCategoryRow extends Component{
   }; // END render
 }; // END CLASS - CinemaCategoryRow
 
+// {type: 'Movies', title: 'Harlem Nights', detailLink: 'https://www.themoviedb.org/movie/9085-harlem-nights', score: 8.0},
 
-class CinemaRow extends Component{
+
+class CinemaRow extends React.Component<{cinemaItem: PropsCinemaItem}>{
   render(){
-    const cinemaItem = this.props.cinemaItem;
     return (
       <tr>
-        <td><a href={cinemaItem.detailLink}>{cinemaItem.title}</a></td>
-        <td>{cinemaItem.score}</td>
+        <td><a href={this.props.cinemaItem.detailLink}>{this.props.cinemaItem.title}</a></td>
+        <td>{this.props.cinemaItem.score}</td>
       </tr>
     );
   }; // END render
