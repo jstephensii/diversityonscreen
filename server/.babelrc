@@ -1,0 +1,14 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "8.9",
+          "es6": true,
+        }
+      }
+    ],
+    "flow"
+  ]
+}

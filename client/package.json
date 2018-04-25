@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://diversity-on-screen.appspot.com/",
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4"
@@ -14,5 +15,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3000"
+  "proxy": "http://localhost:3000",
+  "devDependencies": {
+    "flow-bin": "^0.70.0"
+  }
 }

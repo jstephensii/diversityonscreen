@@ -16,4 +16,4 @@ handlers:
 # site root
 - url: /
   static_files: index.html
-  upload: /client/build/index.html
+  upload: ./../client/build/index.html

@@ -2,12 +2,9 @@
   "name": "diversity-on-screen",
   "version": "1.0.0",
   "description": "Web app for searching diversity information of media properties.",
-  "main": "server.js",
+  "main": "dist/server.js",
   "author": "James Stephens II",
   "license": "ISC",
-  "engines": {
-    "node": "8.x"
-  },
   "repository": {
     "type": "git",
     "url": "https://source.developers.google.com/p/diversity-on-screen/r/diversity-on-screen"
@@ -23,13 +20,24 @@
     "@google-cloud/logging-winston": "^0.9.0",
     "@google-cloud/trace-agent": "^2.7.2",
     "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "morgan": "^1.9.0",
     "path": "^0.12.7",
     "winston": "^2.4.1"
   },
   "devDependencies": {
-    "dotenv": "^5.0.1",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-flowtype": "^2.46.3",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "flow-bin": "^0.70.0",
     "nodemon": "^1.17.3"
   }
 }
