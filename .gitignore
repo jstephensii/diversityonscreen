@@ -54,10 +54,16 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
+# misc environment specific variables file
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # next.js build output
 .next
+
+# babel dist folder
+dist
 
 Diversity-on-Screen-d887a834a715.json
