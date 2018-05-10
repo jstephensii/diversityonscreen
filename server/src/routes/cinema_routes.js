@@ -3,14 +3,15 @@ import type { $Request, $Response } from "express";
 
 const router = require("express").Router();
 
-router.get("/cinema", (req: $Request, res: $Response) => {
+
+router.get(["/cinema", "/cinema/popular"], (req: $Request, res: $Response) => {
   res.status(501);
-  res.send("You would like to get list of popular cinema items.");
+  res.send("Not yet implemented - popular cinema items.");
 });
 
 router.get("/cinema/:id", (req: $Request, res: $Response) => {
   res.status(501);
-  res.send("Requested cinema item: {req.parameter.id}");
+  res.send('Not yet implemented - CinemaItem:' + req.params.id);
 });
 
 module.exports = router;

@@ -1,6 +1,7 @@
 [ignore]
 .*/dist
 .*/coverage
+.*/server/node_modules/grpc/node_modules/protobufjs/src/bower.json
 
 [include]
 
@@ -10,5 +11,6 @@
 
 [options]
 include_warnings=true
+all=true
 
 [strict]

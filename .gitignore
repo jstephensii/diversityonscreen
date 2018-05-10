@@ -55,10 +55,9 @@ typings/
 .yarn-integrity
 
 # misc environment specific variables file
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*
+!.env.example
+.ds_store
 
 # next.js build output
 .next

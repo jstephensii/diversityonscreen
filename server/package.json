@@ -27,15 +27,22 @@
     "flowbuild": "flow-copy-source src dist",
     "pre-doc": "npm run docs &&",
     "prebuild": "npm run clean",
-    "build": "flow-remove-types --out-dir dist/ src/ --all --sourcemaps",
-    "start": "node ./dist/server.js",
+    "build": "flow-remove-types --out-dir dist/ src/ --all",
+    "start": "yarn build && node ./dist/server.js",
     "dev": "watch --wait=1 'flow-remove-types --out-dir dist/ src/ --all --sourcemaps' src/ & nodemon ./dist/server.js",
-    "test": "jest"
+    "test": "mocha",
+    "test:cov": "yarn build && NODE_ENV=coverage nyc --reporter=lcov --reporter=text mocha --timeout=3000",
+    "test:cov_all": "NODE_ENV=coverage nyc --reporter=lcov --reporter=text --all mocha --timeout=3000"
   },
   "watch": {
     "test": "{src,test}/*",
     "lint": "{src,test}/*",
     "build": "src"
+  },
+  "nyc": {
+    "include": [
+      "dist/*"
+    ]
   },
   "dependencies": {
     "@google-cloud/datastore": "^1.4.0",
@@ -45,6 +52,7 @@
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "express-winston": "^2.5.1",
     "morgan": "^1.9.0",
     "path": "^0.12.7",
     "winston": "^2.4.1"
@@ -52,20 +60,23 @@
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-eslint": "^8.2.3",
+    "chai": "^4.1.2",
     "documentation": "^6.3.2",
     "eslint": "^4.9.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-flowtype": "^2.46.3",
     "eslint-plugin-flowtype-errors": "^3.5.1",
     "eslint-plugin-prettier": "^2.6.0",
-    "flow-bin": "^0.70.0",
+    "flow-bin": "^0.71.0",
     "flow-remove-types": "^1.2.3",
     "flow-typed": "^2.4.0",
     "jest-cli": "^22.4.3",
     "nodemon": "^1.17.3",
+    "nyc": "^11.7.1",
     "opn-cli": "^3.1.0",
     "prettier": "^1.12.1",
     "rimraf": "^2.6.2",
+    "supertest": "^3.0.0",
     "watch": "^1.0.2"
   }
 }
