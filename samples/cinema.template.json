@@ -1,0 +1,29 @@
+{
+  "title": "",
+  "idTMDB": 0,
+  "type": "movie",
+  "url": "",
+  "diversityScore": 0,
+  "diversity": {
+    "race": {
+      "homogeneity": 0,
+      "progressiveness": 0
+    },
+    "gender": {
+      "homogeneity": 0,
+      "progressiveness": 0
+    },
+    "ethnicity": {
+      "homogeneity": 0,
+      "progressiveness": 0
+    },
+    "nationality": {
+      "homogeneity": 0,
+      "progressiveness": 0
+    },
+    "age": {
+      "homogeneity": 0,
+      "progressiveness": 0
+    }
+  }
+}

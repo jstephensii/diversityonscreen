@@ -57,7 +57,7 @@ typings/
 # misc environment specific variables file
 .env*
 !.env.example
-.ds_store
+.DS_Store
 
 # next.js build output
 .next
@@ -65,4 +65,6 @@ typings/
 # babel dist folder
 dist
 
+# Google Cloud config files
 Diversity-on-Screen-d887a834a715.json
+source-context.json

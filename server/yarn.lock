@@ -535,7 +535,7 @@ array-unique@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/array-unique/-/array-unique-0.3.2.tgz#a894b75d4bc4f6cd679ef3244a9fd8f46ae2d428"
 
-arrify@^1.0.0, arrify@^1.0.1:
+arrify@1.0.1, arrify@^1.0.0, arrify@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
 
@@ -581,7 +581,7 @@ async-listener@^0.6.0:
     semver "^5.3.0"
     shimmer "^1.1.0"
 
-async@^1.4.0:
+async@1.5.2, async@^1.4.0:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
@@ -1588,6 +1588,13 @@ cache-base@^1.0.1:
     to-object-path "^0.3.0"
     union-value "^1.0.0"
     unset-value "^1.0.0"
+
+cache-manager@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-2.9.0.tgz#5e1f6317ca1a25e40ddf365a7162757af152353e"
+  dependencies:
+    async "1.5.2"
+    lru-cache "4.0.0"
 
 caching-transform@^1.0.0:
   version "1.0.1"
@@ -2905,9 +2912,9 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-flow-bin@^0.71.0:
-  version "0.71.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.71.0.tgz#fd1b27a6458c3ebaa5cb811853182ed631918b70"
+flow-bin@^0.72.0:
+  version "0.72.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.72.0.tgz#12051180fb2db7ccb728fefe67c77e955e92a44d"
 
 flow-remove-types@^1.2.3:
   version "1.2.3"
@@ -3376,6 +3383,21 @@ grpc@^1.10.0:
     nan "^2.10.0"
     node-pre-gyp "0.7.0"
     protobufjs "^5.0.0"
+
+gstore-node@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/gstore-node/-/gstore-node-4.2.1.tgz#c738036051378fe605f44a38993098dfaf5880b6"
+  dependencies:
+    "@google-cloud/datastore" "^1.4.0"
+    arrify "^1.0.1"
+    extend "^3.0.1"
+    is "^3.2.1"
+    moment "^2.22.1"
+    nsql-cache "^1.1.0"
+    nsql-cache-datastore "^1.1.1"
+    optional "^0.1.4"
+    promised-hooks "^3.1.0"
+    validator "^10.1.0"
 
 gtoken@^2.2.0:
   version "2.3.0"
@@ -4009,7 +4031,7 @@ is-word-character@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-word-character/-/is-word-character-1.0.1.tgz#5a03fa1ea91ace8a6eb0c7cd770eb86d65c8befb"
 
-is@^3.0.1, is@^3.2.0:
+is@^3.0.1, is@^3.2.0, is@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/is/-/is-3.2.1.tgz#d0ac2ad55eb7b0bec926a5266f6c662aaa83dca5"
 
@@ -4393,6 +4415,10 @@ jest-worker@^22.4.3:
   dependencies:
     merge-stream "^1.0.1"
 
+jquery@^3.1.0:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
+
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
@@ -4703,6 +4729,13 @@ loud-rejection@^1.0.0:
 lowercase-keys@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/lowercase-keys/-/lowercase-keys-1.0.1.tgz#6f9e30b47084d971a7c820ff15a6c5167b74c26f"
+
+lru-cache@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.0.0.tgz#b5cbf01556c16966febe54ceec0fb4dc90df6c28"
+  dependencies:
+    pseudomap "^1.0.1"
+    yallist "^2.0.0"
 
 lru-cache@^4.0.1, lru-cache@^4.1.2:
   version "4.1.2"
@@ -5016,6 +5049,10 @@ module-details-from-path@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/module-details-from-path/-/module-details-from-path-1.0.3.tgz#114c949673e2a8a35e9d35788527aa37b679da2b"
 
+moment@^2.22.1:
+  version "2.22.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.1.tgz#529a2e9bf973f259c9643d237fda84de3a26e8ad"
+
 morgan@^1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.9.0.tgz#d01fa6c65859b76fcf31b3cb53a3821a311d8051"
@@ -5203,6 +5240,20 @@ npmlog@^4.0.2:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
+nsql-cache-datastore@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/nsql-cache-datastore/-/nsql-cache-datastore-1.1.1.tgz#aed38b384f742b97a72a91bbfe01b460f011a341"
+  dependencies:
+    arrify "1.0.1"
+
+nsql-cache@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/nsql-cache/-/nsql-cache-1.1.0.tgz#a4d01afa658083c023080d61926ebef248e8fd71"
+  dependencies:
+    arrify "^1.0.1"
+    cache-manager "^2.9.0"
+    extend "^3.0.1"
+
 number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
@@ -5343,6 +5394,10 @@ optimist@^0.6.1:
   dependencies:
     minimist "~0.0.1"
     wordwrap "~0.0.2"
+
+optional@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/optional/-/optional-0.1.4.tgz#cdb1a9bedc737d2025f690ceeb50e049444fd5b3"
 
 optionator@^0.8.1, optionator@^0.8.2:
   version "0.8.2"
@@ -5771,6 +5826,13 @@ progress@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.0.tgz#8a1be366bf8fc23db2bd23f10c6fe920b4389d1f"
 
+promised-hooks@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/promised-hooks/-/promised-hooks-3.1.0.tgz#a50915c222cc2a302a44ee07ae35d18453b2e9c1"
+  dependencies:
+    arrify "^1.0.1"
+    is "^3.2.0"
+
 prop-assign@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/prop-assign/-/prop-assign-1.0.0.tgz#9767a1fbfd7093908647a6e846d31b4feaa70459"
@@ -5827,7 +5889,7 @@ ps-tree@^1.1.0:
   dependencies:
     event-stream "~3.3.0"
 
-pseudomap@^1.0.2:
+pseudomap@^1.0.1, pseudomap@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
 
@@ -5859,6 +5921,10 @@ punycode@^1.4.1:
 punycode@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.0.tgz#5f863edc89b96db09074bad7947bf09056ca4e7d"
+
+q@^0.9.7:
+  version "0.9.7"
+  resolved "https://registry.yarnpkg.com/q/-/q-0.9.7.tgz#4de2e6cb3b29088c9e4cbc03bf9d42fb96ce2f75"
 
 qs@6.5.1, qs@^6.4.0, qs@^6.5.1, qs@~6.5.1:
   version "6.5.1"
@@ -6257,6 +6323,14 @@ request@^2.79.0, request@^2.81.0, request@^2.83.0:
     tough-cookie "~2.3.3"
     tunnel-agent "^0.6.0"
     uuid "^3.1.0"
+
+requestify@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/requestify/-/requestify-0.2.5.tgz#80249f1ca7dfdf79fa2a6048aeac37d43e23c905"
+  dependencies:
+    jquery "^3.1.0"
+    q "^0.9.7"
+    underscore "^1.8.3"
 
 require-directory@^2.1.1:
   version "2.1.1"
@@ -7205,6 +7279,10 @@ undefsafe@^2.0.2:
   dependencies:
     debug "^2.2.0"
 
+underscore@^1.8.3:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.9.0.tgz#31dbb314cfcc88f169cd3692d9149d81a00a73e4"
+
 unherit@^1.0.4:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/unherit/-/unherit-1.1.0.tgz#6b9aaedfbf73df1756ad9e316dd981885840cd7d"
@@ -7407,6 +7485,10 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+validator@^10.1.0:
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-10.2.0.tgz#61d6b10c3d5c9f368c75c2ce8ca2b792522eaafa"
 
 value-or-function@^3.0.0:
   version "3.0.0"
@@ -7701,7 +7783,7 @@ y18n@^3.2.0, y18n@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.1.tgz#6d15fba884c08679c0d77e88e7759e811e07fa41"
 
-yallist@^2.1.2:
+yallist@^2.0.0, yallist@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
 

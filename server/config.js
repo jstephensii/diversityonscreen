@@ -12,10 +12,15 @@ config.web.port = process.env.PORT || '3000';
 config.tmdb = {};
 config.tmdb.apiURL = 'https://api.themoviedb.org/3/';
 config.tmdb.apiKey = process.env.TMDB_API_KEY || 'apikey';
+config.tmdb.detailURL = 'https://www.themoviedb.org';
 
 config.gcloud = {};
 config.gcloud.project_id = 'diversity-on-screen';
 config.gcloud.app_creds = 'Diversity-on-Screen-d887a834a715.json';
+config.gcloud.credentials = {
+  projectId: config.gcloud.project_id,
+  keyFilename: __dirname + "/../server/" + config.gcloud.app_creds,
+};
 
 config.tests = {};
 config.tests.coverage_base_url = '../dist/routes/index.js';

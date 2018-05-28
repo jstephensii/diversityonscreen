@@ -1,88 +1,52 @@
-import { datastore } from "google-proto-files";
-import url from 'url';
+/* @flow */
+const gstore = require('gstore-node')();
+const { Schema } = gstore;
 
-import Datastore from '@google-cloud/datastore';
+import typeof {Datastore} from '@google-cloud/datastore';
+const tmdb = require('../services/tmdb');
 
-const CINEMA = [
-  {
-    type: "Movies",
-    title: "Harlem Nights",
-    detailLink: "https://www.themoviedb.org/movie/9085-harlem-nights",
-    score: 8.0
+const cinemaSchema = new Schema({
+  title: {type: String, required: true},
+  tdmb_details: {
+    id: {type: Number, required: true},
+    title: {type: String, required: true},
+    poster_path: {type: String},
+    backdrop_path: {type: String},
+    overview: {type: String},
+    release_date: {type: Date}
   },
-  {
-    type: "Movies",
-    title: "Remember the Titans",
-    detailLink: "https://www.themoviedb.org/movie/10637-remember-the-titans",
-    score: 7.0
-  },
-  {
-    type: "Movies",
-    title: "Black Panther",
-    detailLink: "https://www.themoviedb.org/movie/284054-black-panther",
-    score: 9.0
-  },
-  {
-    type: "TV",
-    title: "'black-ish",
-    detailLink: "https://www.themoviedb.org/tv/61381-black-ish",
-    score: 8.0
-  },
-  {
-    type: "TV",
-    title: "Burn Notice",
-    detailLink: "https://www.themoviedb.org/tv/2919-burn-notice",
-    score: 1.0
-  },
-  {
-    type: "TV",
-    title: "This Is Us",
-    detailLink: "https://www.themoviedb.org/tv/67136-this-is-us",
-    score: 7.0
+  diversityScore: {type: Number},
+  diversity: {
+    race: {
+      homogeneity: {type: Number},
+      progressiveness: {type: Number}
+    },
+    gender: {
+      homogeneity: {type: Number},
+      progressiveness: {type: Number}
+    },
+    ethnicity: {
+      homogeneity: {type: Number},
+      progressiveness: {type: Number}
+    },
+    nationality: {
+      homogeneity: {type: Number},
+      progressiveness: {type: Number}
+    },
+    age: {
+      homogeneity: {type: Number},
+      progressiveness: {type: Number}
+    }
   }
-];
+});
 
-module.exports = class Cinema {
-  constructor(tmdb_cinema, datastore){
-    this.detail = {};
-  }
+const popularCinemaSchema = new Schema({
+  type: {type: String, default: "Popular"},
+  modifiedOn: {type: Date},
+  cinema: {type: Object, required: true}
+});
 
-  makeCinemaMovie(tmdbObject){
-    return {
-      title: tmdbObject.title,
-      idTMDB: tmdbObject.id,
-      type: "movie",
-      url: "",
-      diversityScore: 0,
-      diversity: {
-        race: {
-          homogeneity: 0,
-          progressiveness: 0
-        },
-        gender: {
-          homogeneity: 0,
-          progressiveness: 0
-        },
-        ethnicity: {
-          homogeneity: 0,
-          progressiveness: 0
-        },
-        nationality: {
-          homogeneity: 0,
-          progressiveness: 0
-        },
-        age: {
-          homogeneity: 0,
-          progressiveness: 0
-        }
-      }
-    };
-  }
-
-  insertCinema(cinema){
-    datastore.save({
-      key: datastore.key(cinema.idTMDB),
-      data: cinema
-    });
-  }
+module.exports = {
+  Cinema: gstore.model('Cinema', cinemaSchema),
+  PopularCinema: gstore.model('PopularCinema', popularCinemaSchema)
 };

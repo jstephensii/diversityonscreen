@@ -21,23 +21,31 @@
   ],
   "scripts": {
     "docs": "documentation readme src --section=API",
-    "clean": "rimraf dist",
+    "clean": "rm -rf dist",
     "flow": "flow",
     "flow:deps": "flow-typed install",
     "flowbuild": "flow-copy-source src dist",
     "pre-doc": "npm run docs &&",
     "prebuild": "npm run clean",
-    "build": "flow-remove-types --out-dir dist/ src/ --all",
-    "start": "yarn build && node ./dist/server.js",
-    "dev": "watch --wait=1 'flow-remove-types --out-dir dist/ src/ --all --sourcemaps' src/ & nodemon ./dist/server.js",
+    "build": "flow-remove-types --out-dir dist/ src/ --all && cp -R ../client/build dist/frontend",
+    "build:dev": "flow-remove-types --out-dir dist/ src/ --all --sourcemaps && cp -R ../client/build dist/frontend",
+    "start": "node ./dist/server.js",
+    "datastore:start": "gcloud beta emulators datastore start",
+    "dev:datastore:start": "$(gcloud beta emulators datastore env-init)",
+    "dev:datastore:end": "$(gcloud beta emulators datastore env-unset)",
+    "dev": "watch 'yarn clean && yarn build:dev && nodemon ./dist/server.js' src/ --wait=3 -d -u -p=/dist/",
+    "dev:debug": "watch 'yarn clean && yarn build:dev && nodemon --inspect ./dist/server.js' src/ --wait=3 -d -u -p=/dist/",
     "test": "mocha",
     "test:cov": "yarn build && NODE_ENV=coverage nyc --reporter=lcov --reporter=text mocha --timeout=3000",
-    "test:cov_all": "NODE_ENV=coverage nyc --reporter=lcov --reporter=text --all mocha --timeout=3000"
+    "test:cov_all": "NODE_ENV=coverage nyc --reporter=lcov --reporter=text --all mocha --timeout=3000",
+    "deploy": "yarn build && gcloud app deploy"
   },
-  "watch": {
-    "test": "{src,test}/*",
-    "lint": "{src,test}/*",
-    "build": "src"
+  "nodemonConfig": {
+    "delay": "2500",
+    "ignore": ["test/*", "dist/*"],
+    "events": {
+      "restart": "osascript -e 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'"
+    }
   },
   "nyc": {
     "include": [
@@ -49,13 +57,17 @@
     "@google-cloud/debug-agent": "^2.5.0",
     "@google-cloud/logging-winston": "^0.9.0",
     "@google-cloud/trace-agent": "^2.7.2",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-winston": "^2.5.1",
     "flow-remove-types": "^1.2.3",
+    "gstore-node": "^4.2.1",
+    "moment": "^2.22.1",
     "morgan": "^1.9.0",
     "path": "^0.12.7",
+    "requestify": "^0.2.5",
     "winston": "^2.4.1"
   },
   "devDependencies": {
@@ -68,14 +80,13 @@
     "eslint-plugin-flowtype": "^2.46.3",
     "eslint-plugin-flowtype-errors": "^3.5.1",
     "eslint-plugin-prettier": "^2.6.0",
-    "flow-bin": "^0.71.0",
+    "flow-bin": "^0.72.0",
     "flow-typed": "^2.4.0",
     "jest-cli": "^22.4.3",
     "nodemon": "^1.17.3",
     "nyc": "^11.7.1",
     "opn-cli": "^3.1.0",
     "prettier": "^1.12.1",
-    "rimraf": "^2.6.2",
     "supertest": "^3.0.0",
     "watch": "^1.0.2"
   }

@@ -11,6 +11,5 @@
 
 [options]
 include_warnings=true
-all=true
 
 [strict]
