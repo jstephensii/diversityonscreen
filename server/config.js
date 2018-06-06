@@ -13,6 +13,7 @@ config.tmdb = {};
 config.tmdb.apiURL = 'https://api.themoviedb.org/3/';
 config.tmdb.apiKey = process.env.TMDB_API_KEY || 'apikey';
 config.tmdb.detailURL = 'https://www.themoviedb.org';
+config.tmdb.configURL = 'https://api.themoviedb.org/3/configuration';
 
 config.gcloud = {};
 config.gcloud.project_id = 'diversity-on-screen';

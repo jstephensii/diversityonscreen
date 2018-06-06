@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/jstephensii/.nvm/versions/node/v9.5.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js test
+  /Users/jstephensii/.nvm/versions/node/v9.5.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js dev
 
 PATH: 
   /Users/jstephensii/tools/google-cloud-sdk/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/Users/jstephensii/.nvm/versions/node/v9.5.0/bin:/Users/jstephensii/tools/google-cloud-sdk/bin:/usr/local/mysql/bin:/Users/jstephensii/tools/apache-maven-3.3.9/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/jstephensii/tools/android-sdk-macosx/platform-tools:/Users/jstephensii/tools/google-cloud-sdk/bin:/usr/local/mysql/bin:/Users/jstephensii/tools/apache-maven-3.3.9/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/jstephensii/tools/android-sdk-macosx/platform-tools

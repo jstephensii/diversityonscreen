@@ -42,7 +42,10 @@
   },
   "nodemonConfig": {
     "delay": "2500",
-    "ignore": ["test/*", "dist/*"],
+    "ignore": [
+      "test/*",
+      "dist/*"
+    ],
     "events": {
       "restart": "osascript -e 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'"
     }
@@ -73,7 +76,7 @@
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-eslint": "^8.2.3",
-    "chai": "^4.1.2",
+    "chai": "*",
     "documentation": "^6.3.2",
     "eslint": "^4.9.0",
     "eslint-config-prettier": "^2.9.0",
@@ -83,6 +86,7 @@
     "flow-bin": "^0.72.0",
     "flow-typed": "^2.4.0",
     "jest-cli": "^22.4.3",
+    "mocha": "*",
     "nodemon": "^1.17.3",
     "nyc": "^11.7.1",
     "opn-cli": "^3.1.0",

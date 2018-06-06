@@ -16,17 +16,17 @@ module.exports = {
     };
 
     return axios.all([
-      axios.get(config.tmdb.apiURL + 'movie/popular',
-      {params: params}
-    ),
-      axios.get(config.tmdb.apiURL + 'tv/popular',{
-        params: params
-      })
+      axios.get(config.tmdb.apiURL + 'movie/popular', {params: params}),
+      axios.get(config.tmdb.apiURL + 'tv/popular',{ params: params}),
+      axios.get(config.tmdb.configURL, {params: params})
     ])
-    .then(axios.spread(function (movieResponse, tvResponse) {
+    .then(axios.spread(function (movieResponse, tvResponse, configResponse) {
       return {
-          movies: movieResponse.data.results,
-          tv: tvResponse.data.results
+          config: configResponse.data,
+          content: {
+            movies: movieResponse.data.results,
+            tv: tvResponse.data.results
+          }
         };
     }))
     .catch(function (error){

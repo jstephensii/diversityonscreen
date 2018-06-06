@@ -11,30 +11,49 @@ const {PopularCinema} = require('../models/cinema');
 
 const gstore = require('gstore-node')();
 
-
 router.get(["/cinema", "/cinema/popular"], (req: $Request, res: $Response) => {
-  PopularCinema.findOne({type: "Popular"})
-  .then((entity) => {
-    if (Date.now()- (new Date(entity.modifiedOn)).getTime() < 24 * 60 * 60 * 1000 ){
+  getPopularCinema()
+  .then((savedEntity) => {
       res.status(200);
-      res.send(entity.entityData);
-      return;
-    } else {
-      tmdb.getPopularCinema()
-      .then((result) => {
-        entity.entityData.cinema = result;
-        return entity.save();
-      })
-      .then((savedEntity) => {
-        res.status(200);
-        res.send(savedEntity.entityData);
-      });
+      res.send(savedEntity.entityData);
+    });
+});
+
+function getPopularCinema(){
+  return PopularCinema.findOne({type: "Popular"})
+  .catch(function(error){}) //Item may not exist in DB
+  .then((entity) => {
+    if (entity === undefined) {
+      return createEntity();
     }
+
+    if (!isEntityStale(entity)){
+      return entity;
+    }
+
+    return updateEntity(entity);
   })
   .catch(function (error){
-    console.log(error);
+       console.log(error);
   });
-});
+}
+
+function createEntity(){
+  return tmdb.getPopularCinema()
+  .then((result) => {
+    const popularCinema = new PopularCinema(result);
+    return popularCinema.save();
+  })
+}
+
+function isEntityStale(entity: PopularCinema){return (Date.now()- (new Date(entity.modifiedOn)).getTime() > 24 * 60 * 60 * 1000 )} //Not promise - boolean
+
+function updateEntity(entity: PopularCinema){
+  return tmdb.getPopularCinema()
+  .then((result) => {
+    entity.entityData.cinema = result;
+    return entity.save();
+})};
 
 router.get("/cinema/:id", (req: $Request, res: $Response) => {
   res.status(501);

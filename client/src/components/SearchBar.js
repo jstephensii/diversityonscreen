@@ -9,7 +9,7 @@ type Props = {
 
 export class SearchBar extends React.Component<Props>{
   render(){
-    const searchText = this.props.text;
+    //const searchText = this.props.text;
     return (
       <form>
         <input type="text" placeholder="Search..." value={this.props.text} onChange={this.props.handleTextChange}/>

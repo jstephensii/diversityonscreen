@@ -1,12 +1,11 @@
-var should = require('chai').should(),
-expect = require('chai').expect,
+var expect = require('chai').expect,
 request = require('supertest'),
 express = require('express'),
 winston = require('winston'),
 expressWinston = require('express-winston');
 
 const config = require('../config');
-const logger = require('../src/utils/logger');
+//const logger = require('../src/utils/logger');
 const app = express();
 
 describe('Cinema API CRUD', function(){
@@ -15,7 +14,7 @@ describe('Cinema API CRUD', function(){
   before(function setupHostApi() {
     if (process.env.NODE_ENV === "coverage") {
       const app = express();
-      logger.debug('URL: ' + config.tests.coverage_base_url);
+      //logger.debug('URL: ' + config.tests.coverage_base_url);
       app.use('', require(config.tests.coverage_base_url));
       api = request(app);
     } else {
@@ -25,7 +24,7 @@ describe('Cinema API CRUD', function(){
   });
 
   describe.only('Get /api/cinema - get popular cinema items', function(){
-    let expectedProps = ['id', 'type', 'cinema', 'modifiedOn'];
+    let expectedProps = ['id','config', 'type', 'content', 'modifiedOn'];
     it('should return a JSON array', function(done){
       api.get(baseAPI + '/cinema')
       .end(function(err, res){
@@ -52,7 +51,8 @@ describe('Cinema API CRUD', function(){
         let extraProps = Object.keys(res.body).filter(function(key){
           return !expectedProps.includes(key);
         });
-        expect(extraProps.length).to.equal(0);
+        expect(extraProps.length, extraProps +
+          ': is also a property on this object').to.equal(0);
         done();
       });
     });
@@ -60,8 +60,8 @@ describe('Cinema API CRUD', function(){
       api.get(baseAPI + '/cinema')
       .end(function(err, res){
         expect(res.status).to.equal(200);
-        expect(res.body.cinema.movies).to.have.lengthOf(20);
-        expect(res.body.cinema.tv).to.have.lengthOf(20);
+        expect(res.body.content.movies).to.have.lengthOf(20);
+        expect(res.body.content.tv).to.have.lengthOf(20);
         done();
       });
     });

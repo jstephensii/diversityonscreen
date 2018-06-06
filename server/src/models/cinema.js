@@ -43,7 +43,8 @@ const cinemaSchema = new Schema({
 const popularCinemaSchema = new Schema({
   type: {type: String, default: "Popular"},
   modifiedOn: {type: Date},
-  cinema: {type: Object, required: true}
+  content: {type: Object, required: true},
+  config: {type: Object, required: true}
 });
 
 module.exports = {
