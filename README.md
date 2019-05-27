@@ -32,7 +32,7 @@ Client: React + ES6 setup with [create-react-app](https://github.com/facebook/cr
 #### Client
 1. Install dependencies for the Client
 ```
-  cd /client && yarn install.
+  cd client/ && yarn install
 ```
 2. Start webpack-dev-server
 ```

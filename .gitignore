@@ -57,7 +57,7 @@ typings/
 # misc environment specific variables file
 .env*
 !.env.example
-.DS_Store
+.[dD][sS]_[sS][oO][rR][eE]
 
 # next.js build output
 .next

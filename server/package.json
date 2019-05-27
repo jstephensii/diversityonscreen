@@ -14,7 +14,7 @@
     "url": "https://source.developers.google.com/p/diversity-on-screen/r/diversity-on-screen"
   },
   "engines": {
-    "node": ">=9.5"
+    "node": ">=10.0"
   },
   "files": [
     "dist"
