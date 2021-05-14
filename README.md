@@ -1,8 +1,31 @@
 # Diversity on Screen
 
-Tracking diversity in the media.  From movies to television shows with the intent of delivering multiple cross-platform tools.
+### Overview
+Diversity on Screen is a website/app that will help users find, and view diverse content
 
-## Getting Started
+#### Goals
+1. Ability to search for diverse content across the following categories:
+   - Race, Gender, Ethnicity, Nationality, Age
+2. View content within the site.
+3. Easy and intuitive navigation.
+
+#### Categories
+   Content will be measured across the following categories.
+   - Race
+   - Gender
+   - Ethnicity
+   - Nationality
+   - Age
+
+#### Qualities
+   Each diversity category will have the following qualities:
+   - Homogeneity [0-10.0] - How alike\different is the content in this sub-category.
+     - Homogeneous(0) to Heterogeneous(10.0)
+   - Progressiveness [0-10.0] - How far from the norm is the content in this sub-category
+     - Status Quo(0) to Very Progressive(10.0)
+
+
+### Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
