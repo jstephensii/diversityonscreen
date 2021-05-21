@@ -68,7 +68,7 @@
     "flow-remove-types": "^1.2.3",
     "gstore-node": "^4.2.1",
     "moment": "^2.22.1",
-    "morgan": "^1.9.0",
+    "morgan": "^1.9.1",
     "path": "^0.12.7",
     "requestify": "^0.2.5",
     "winston": "^2.4.1"
