@@ -67,7 +67,7 @@
     "express-winston": "^2.5.1",
     "flow-remove-types": "^1.2.3",
     "gstore-node": "^4.2.1",
-    "moment": "^2.22.1",
+    "moment": "^2.29.4",
     "morgan": "^1.9.0",
     "path": "^0.12.7",
     "requestify": "^0.2.5",
